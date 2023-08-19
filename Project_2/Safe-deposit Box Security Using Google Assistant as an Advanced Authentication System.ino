@@ -1,29 +1,29 @@
-//pemanggilan library
+//library 
 #include <MFRC522.h>
 #include <SPI.h>
 #include <ESP8266WiFi.h>
 #include <BlynkSimpleEsp8266.h>
-//deklarasi pin simple select dan rst
+//RFID pins Declaration
 #define SS_PIN D2
 #define RST_PIN D1
 MFRC522 rfid(SS_PIN, RST_PIN);
-// deklarasi template dan token autentikasi
+// Blynk Template Declaration
 #define BLYNK_TEMPLATE_ID "TMPL6DctVJlW4"
 #define BLYNK_TEMPLATE_NAME "Skripsi"
 #define BLYNK_AUTH_TOKEN "29gzO84ywah4Z077ALjI_1JYYmyfOiGz"
 
 
-// penetapan token autentikasi dan deklarasi ssid dan password wifi
+// Blynk auth token deklaration and wifi integration
 char auth[] = BLYNK_AUTH_TOKEN;
 char ssid[] = "Ibnu";
 char pass[] = "Ibnu1201";
-//Deklarasi variabel
+//variable declaration
 bool isAuthenticated = false;
 String allowedCardSerial1 = "2125fa23";
 String allowedCardSerial2 = "76ac8f29";
 int authenticationAttempts = 0;
 const int MAX_AUTHENTICATION_ATTEMPTS = 3;
-// subprogram Datastream integer V0
+// subprogram Datastream integer V0 for blynk parameter
 BLYNK_WRITE(V0)
 {
   int value = param.asInt();
@@ -37,7 +37,7 @@ BLYNK_WRITE(V0)
   
   Blynk.virtualWrite(V0, value);
 }
-// penetapan mode pin dan integrasi blynk
+// pinmode, serial, spi, and blynk initial setup
 void setup() {
   Serial.begin(9600);
   SPI.begin();
@@ -49,19 +49,19 @@ void setup() {
   Blynk.virtualWrite(V0, LOW);
   
 }
-// pemanggilan subprogram RFID dan aktivasi blynk
+// calling the blynk activation and RFID authentication subprogram 
 void loop() {
   
   Blynk.run();
   rfidLoop();
 }
-//subprogram untuk autentikasi RFID
+//subprogram for RFID authentication
 void rfidLoop() {
   
   digitalWrite(D0, HIGH);
   int pinvalue = digitalRead(D3);
 
-//Pembacaan RFID
+// RFID reading
   if (rfid.PICC_IsNewCardPresent() && rfid.PICC_ReadCardSerial()) {
     String cardSerial = "";
     for (byte i = 0; i < rfid.uid.size; i++) {
@@ -69,13 +69,13 @@ void rfidLoop() {
       cardSerial += String(rfid.uid.uidByte[i], HEX);
     }
 
-//sekuensi ketika pembacaan berhasil
+//RFID succeed Authentication sequence
     if (cardSerial == allowedCardSerial1 && authenticationAttempts < MAX_AUTHENTICATION_ATTEMPTS ) {
       isAuthenticated = true;
       Serial.println("Card Serial: " + cardSerial);
       Serial.println("Authentication successful!");
       authenticationAttempts = 0; // mereset perhitungan percobaan akses
-      //aktivasi push notification pada blynk
+      //blynk push notification activation
       Blynk.logEvent("rfid", "RFID authentication has been detected, you may unlock the safe using voice command");
       
       
@@ -85,21 +85,21 @@ void rfidLoop() {
       Serial.println("Card Serial: " + cardSerial);
       Serial.println("Authentication successful!");
       authenticationAttempts = 0; // mereset perhitungan percobaan akses
-      //aktivasi push notification pada blynk
+      //blynk push notification activation
       Blynk.logEvent("rfid", "RFID authentication has been detected, you may unlock the safe using voice command");
       
     }
-//sekuensi ketika pembacaan tidak berhasil
+// Sequence when RFID authentication is failed
     else {
       isAuthenticated = false;
       Serial.println("Authentication failed!");
       Serial.println("Card Serial: " + cardSerial);
       authenticationAttempts++;
       Blynk.logEvent("rfid", "Access Attempt has been detected!");
-     //sekuensi ketika percobaan mencapai batas maksimum
+     //Sequence When RFID authentication has reached the maximum authentication attempts
       if (authenticationAttempts >= MAX_AUTHENTICATION_ATTEMPTS) {
         Serial.println("Maximum authentication attempts reached!");
-        //aktivasi push notification pada blynk
+        //blynk warning push notification activation that would activate alarm
          Blynk.logEvent("maximum_access_attempt", "maximum attempt reached, RFID Authentication has been locked!");
         
       }
@@ -108,24 +108,24 @@ void rfidLoop() {
     rfid.PICC_HaltA();
     rfid.PCD_StopCrypto1();
   } 
-//sekuensi ketika pembacaan RFID berhasil dan dibawah maksimum percobaan akses
+//the sequence when the RFID read is successful and below the maximum access attempts
   if (isAuthenticated == true && pinvalue == HIGH && authenticationAttempts < MAX_AUTHENTICATION_ATTEMPTS)
   {
   digitalWrite(D0, LOW);
-  //aktivasi push notification pada blynk
+  //push notification activation on blynk
     Blynk.logEvent("google_assistant", "Safe Deposit Box Has been unlocked");
     delay(6000);
-    //sekuensi untuk mereset push notification
+    //sequence to reset the push notification
     digitalWrite(D0, HIGH);
     isAuthenticated = false;
     digitalWrite(D4, LOW);
     Blynk.virtualWrite(V0, LOW);
   }
-//sekuensi ketika percobaan akses autentikasi RFID diblokir dan autentikasi
+//the sequence when the RFID authentication access attempt is blocked and authentication
   else if (isAuthenticated == false && pinvalue == HIGH && authenticationAttempts >= MAX_AUTHENTICATION_ATTEMPTS )
   {
     authenticationAttempts = 0;
-    //aktivasi push notification pada blynk
+    //sequence to reset the push notification
     Blynk.logEvent("google_assistant", "RFID authentication has been unlocked");
   }
 }
