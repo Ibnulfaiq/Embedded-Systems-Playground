@@ -36,11 +36,3 @@ The **Smart Pest Control and Lamp Monitoring System** is a project that combines
   - Sensors (e.g., light sensor, motion sensor)
   - Other necessary components
 
-## Getting Started
-
-Follow these steps to set up and run the project:
-
-1. Clone this repository:
-   ```sh
-   git clone https://github.com/Ibnulfaiq/Embedded-Systems-Playground.git
-   cd Embedded-Systems-Playground/Smart%20Pest%20Control%20and%20Lamp%20Monitoring%20System%20using%20Blynk
