@@ -2,8 +2,9 @@
 
 Welcome to the **Smart Pest Control and Lamp Monitoring System** project! This project showcases an IoT solution that monitors lamps and controls pest infestations using the Blynk platform.
 
+## Project Picture
 ![Project Image](https://github.com/Ibnulfaiq/Embedded-Systems-Playground/blob/main/Project_1/Smart%20Lamp%20Pest%20Control%20Implementation.jpg)
-![Project Image](https://github.com/Ibnulfaiq/Embedded-Systems-Playground/blob/main/Project_1/Smart%20Lamp%20Pest%20Control%20Monitoring%20Interface.jpg) <!-- Replace with an actual image of your project -->
+![Project Image](https://github.com/Ibnulfaiq/Embedded-Systems-Playground/blob/main/Project_1/Smart%20Lamp%20Pest%20Control%20Monitoring%20Interface.jpg)
 
 
 ## Table of Contents
@@ -12,9 +13,7 @@ Welcome to the **Smart Pest Control and Lamp Monitoring System** project! This p
 - [Features](#features)
 - [Hardware Components](#hardware-components)
 - [Getting Started](#getting-started)
-- [Usage](#usage)
 - [Contributing](#contributing)
-- [License](#license)
 
 ## Introduction
 
@@ -36,3 +35,6 @@ The **Smart Pest Control and Lamp Monitoring System** is a project that combines
   - Sensors (e.g., light sensor, motion sensor)
   - Other necessary components
 
+## Contributing
+
+- Muh Ibnul Faiq Salam [@Ibnulfaiq]([https://github.com/Ibnulfaiq]
