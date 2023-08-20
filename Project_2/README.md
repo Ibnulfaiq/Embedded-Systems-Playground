@@ -147,7 +147,7 @@ This versatile security system not only combines RFID and Google Assistant authe
 
 ## Contributors
 
-- Your Name [@Ibnulfaiq](https://github.com/Ibnulfaiq)
+- Muh. Ibnul Faiq Salam [@Ibnulfaiq](https://github.com/Ibnulfaiq)
 
 Contributions to this project are welcome. Feel free to open issues and submit pull requests to improve the project.
 
