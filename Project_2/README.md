@@ -61,17 +61,22 @@ For a seamless interaction between the project and Google Assistant, Blynk, and 
 1. **Blynk Integration**:
    - Begin by setting up a Blynk account and creating a new project.
    - Add a device to your Blynk project. You can use a predefined hardware model or create a custom template.
-   - Configure Blynk datastreams to serve as triggers for specific actions. For example, create a datastream named "UnlockTrigger" to activate actions based on Google Assistant voice commands.
-   - Configure the event to allow Push Notification Activation on blynk
+     
    ![Blynk Device Template](https://github.com/Ibnulfaiq/Embedded-Systems-Playground/blob/main/Project_2/Blynk%20device.png)
-   ![Blynk Datastream](https://github.com/Ibnulfaiq/Embedded-Systems-Playground/blob/main/Project_2/Datastream%20Blynk.png)
+   
+   - Configure Blynk datastreams to serve as triggers for specific actions. For example, create a datastream named "UnlockTrigger" to activate actions based on Google Assistant voice commands.
+   - 
+      ![Blynk Datastream](https://github.com/Ibnulfaiq/Embedded-Systems-Playground/blob/main/Project_2/Datastream%20Blynk.png)
+     
+   - Configure the event to allow Push Notification Activation on blynk
+  
    ![Blynk Event](https://github.com/Ibnulfaiq/Embedded-Systems-Playground/blob/main/Project_2/Push%20Notification%20And%20Events%20.png)
 
-2. **Code Implementation for Blynk**:
+3. **Code Implementation for Blynk**:
    - Modify the Arduino code [Safe-deposit Box Security Using Google Assistant as an Advanced Authentication System.ino](Project_2/Safe-deposit%20Box%20Security%20Using%20Google%20Assistant%20as%20an%20Advanced%20Authentication%20System.ino) to include the Blynk library and handle communication with Blynk.
    - Use your Blynk device template, including the Auth Token, to interact with Blynk. When the "UnlockTrigger" datastream is triggered, activate the appropriate action in your code to unlock the safe-deposit box.
 
-3. **Google Assistant Voice Commands**:
+4. **Google Assistant Voice Commands**:
    - Configure IFTTT applets using the Webhooks service to connect Google Assistant voice commands to Blynk actions.
    - Set up IFTTT applets to trigger when specific phrases are spoken to Google Assistant. For example, set a phrase like "Activate unlock sequence" to trigger a Webhooks GET request to your Blynk project, activating the "UnlockTrigger" datastream using the Blynk Auth Token as a parameter.
 
