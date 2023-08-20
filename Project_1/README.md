@@ -12,7 +12,6 @@ Welcome to the **Smart Pest Control and Lamp Monitoring System** project! This p
 - [Introduction](#introduction)
 - [Features](#features)
 - [Hardware Components](#hardware-components)
-- [Getting Started](#getting-started)
 - [Contributing](#contributing)
 
 ## Introduction
@@ -21,10 +20,10 @@ The **Smart Pest Control and Lamp Monitoring System** is a project that combines
 
 ## Features
 
-- Remote monitoring of lamp status and pest control devices.
-- Real-time data visualization through the Blynk mobile app.
-- Automation of pest control mechanisms based on sensor inputs.
-- User-friendly Blynk interface for easy control and management.
+- **Remote Lamp Monitoring**: Keep track of your lamps' status remotely through the Blynk mobile app. Monitor whether your lamps are functioning as expected, ensuring efficient pest control.
+- **Pest Control Automation**: Automatically trigger pest control mechanisms based on real-time sensor data. This ensures a proactive approach to managing pest infestations.
+- **Real-time Data Visualization**: The Blynk mobile app provides real-time data visualization, allowing you to analyze lamp and pest control data from anywhere.
+- **User-friendly Interface**: The Blynk interface offers a user-friendly way to control and manage your lamp and pest control devices. Interact with the system effortlessly using your smartphone.
 
 ## Hardware Components
 
